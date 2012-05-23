@@ -1,0 +1,10 @@
+*.gem
+*.rbc
+*~
+.bundle
+.rvmrc
+coverage/*
+doc/*
+Gemfile.lock
+log/*
+pkg/*
