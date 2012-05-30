@@ -77,12 +77,12 @@ describe Underskog::Client do
 
   it "should recursively merge connection options" do
     ua = 'Custom User Agent'
-    stub_request(:get, "https://localhost/api/v1/users/831?access_token").
+    stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
       with(:headers => {"Accept" => "application/json", "User-Agent" => ua}).
       to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
     client = Underskog::Client.new(:connection_options => {:headers => {:user_agent => ua}})
     client.user(831)
-    a_get("/api/v1/users/831?access_token").
+    a_get("/api/v1/users/831?access_token&id=831").
       with(:headers => {"User-Agent" => ua}).
       should have_been_made
   end

@@ -24,6 +24,8 @@ module Underskog
         :url => options.fetch(:endpoint, endpoint),
       }
       @connection ||=Faraday.new(default_options.deep_merge(connection_options)) do |builder|
+        builder.use Faraday::Request::Multipart
+        builder.use Faraday::Request::UrlEncoded
         builder.use Underskog::Response::RaiseClientError
         builder.use Underskog::Response::ParseJson
         builder.use Underskog::Response::RaiseServerError

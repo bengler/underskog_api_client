@@ -10,12 +10,12 @@ module Underskog
       @created_at ||= Time.parse(@attrs['created_at']) unless @attrs['created_at'].nil?
     end
 
-    # Time when the object was updated at on Underskog
+    # The use which created the object
     #
-    # @return [Time]
-    def updated_at
-      @created_at ||= Time.parse(@attrs['updated_at']) unless @attrs['updated_at'].nil?
+    # @return Underskog::User
+    def created_by
+      @created_by ||= Underskog::User.new(@attrs['creator']) if
+        @attrs['creator'].is_a?(Hash) and !@attrs['creator'].empty?
     end
-
   end
 end

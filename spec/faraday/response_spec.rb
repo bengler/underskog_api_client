@@ -17,7 +17,7 @@ describe Faraday::Response do
   }.each do |status, exception|
     context "when HTTP status is #{status}" do
       before do
-        stub_request(:get, "https://localhost/api/v1/users/1?access_token").
+        stub_request(:get, "https://localhost/api/v1/users/1?access_token&id=1").
           to_return(:status => status)
       end
 
@@ -32,7 +32,7 @@ describe Faraday::Response do
   context "when response status is 404 from lookup" do
 
     before do
-      stub_request(:get, "https://localhost/api/v1/users/0?access_token").
+      stub_request(:get, "https://localhost/api/v1/users/0?access_token&id=0").
         to_return(:status => 404)
     end
 

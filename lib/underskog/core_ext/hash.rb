@@ -18,37 +18,35 @@ class Hash
 
   # Take a user and merge it into the hash with the correct key
   #
-  # @param user[Integer, Underskog::User] A Underskog user ID or object.
+  # @param user[Integer, String, Underskog::User] A Underskog user ID or object.
   # @return [Hash]
   def merge_user!(user, prefix=nil, suffix=nil)
     case user
     when Integer
-      self[[prefix, "user_id", suffix].compact.join("_").to_sym] = user
+      self[[prefix, "id", suffix].compact.join("_").to_sym] = user
+    when String
+      self[[prefix, "id", suffix].compact.join("_").to_sym] = URI.escape(user)
     when Underskog::User
       if user.id
-        self[[prefix, "user_id", suffix].compact.join("_").to_sym] = user.id
+        self[[prefix, "id", suffix].compact.join("_").to_sym] = user.id
       end
     end
     self
   end
 
-  # Take a multiple users and merge them into the hash with the correct keys
+  # Take a user and merge it into the hash with the correct key
   #
-  # @param users [Array<Integer, Underskog::User>, Set<Integer, Underskog::User>] An array of Underskog user IDs or objects.
+  # @param user[Integer, Underskog::Event] A Underskog event ID or object.
   # @return [Hash]
-  def merge_users!(*users)
-    user_ids = []
-    users.flatten.each do |user|
-      case user
-      when Integer
-        user_ids << user
-      when Underskog::User
-        if user.id
-          user_ids << user.id
-        end
+  def merge_event!(event, prefix=nil, suffix=nil)
+    case event
+    when Integer
+      self[[prefix, "id", suffix].compact.join("_").to_sym] = event
+    when Underskog::Event
+      if event.id
+        self[[prefix, "id", suffix].compact.join("_").to_sym] = event.id
       end
     end
-    self[:user_id] = user_ids.join(',') unless user_ids.empty?
     self
   end
 
