@@ -7,7 +7,7 @@ module Underskog
   class User < Underskog::Base
     include Underskog::Creatable
     include Underskog::Updatable
-    lazy_attr_reader :id, :name, :realname, :description, :image_url,
+    lazy_attr_reader :id, :name, :realname, :sex, :description, :image_url,
       :email, :home_url, :gardener, :season_pass_active, :friend
 
     # @param other [Underskog::User]
