@@ -23,10 +23,6 @@ module Underskog
       @venue ||= Underskog::Venue.new(@attrs['venue'])
     end
 
-    def participations(options={})
-      Underskog.participations(self, options)
-    end
-
     def start_time
       @start_time ||= Time.parse(@attrs['time'])
     end

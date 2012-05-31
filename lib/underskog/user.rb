@@ -16,17 +16,5 @@ module Underskog
       super || (other.class == self.class && other.id == self.id)
     end
 
-    def circle(options={})
-      Underskog.circle(self, options)
-    end
-
-    def events(options={})
-      Underskog.user_events(self, options)
-    end
-
-    def circle_events(options={})
-      Underskog.circle_events(self, options)
-    end
-
   end
 end
