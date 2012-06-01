@@ -112,15 +112,16 @@ module Underskog
     # @requires_authentication Yes
     # @overload event(event, options={})
     #   @param event [Integer, Underskog::Event] A Underskog event ID or object.
-    #   @param options [Hash] A customizable set of options.
-    #   @return [Underskog::Event] The event set participation for.
+    #   @param options [Hash] A customizable set of options (i.e. {:kind => 'attend'}).
+    #   @return [boolean] True if the event participation was set, false otherwise
     def rsvp(*args)
       options = args.last.is_a?(Hash) ? args.pop : {}
       if event = args.pop
         options.merge_event!(event)
-        event = post("api/v1/events/#{options[:id]}/rsvp", options)
+        returned_event = post("api/v1/events/#{options[:id]}/rsvp", options)
+        return true if event == Underskog::Event.new(returned_event)
       end
-      Underskog::Event.new(event)
+      false
     end
 
     # Returns participations for a given event
