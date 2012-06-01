@@ -7,7 +7,7 @@ An Underskog API wrapper for Ruby Gem
 	Underskog.access_token = "XXXXXXXXXXXXXXXXXXX"
 	Underskog.current_user
 
-#### Use as a intance object:
+#### Use as a instance object:
 
 	require "underskog"
 	client_1 = Underskog::Client.new
