@@ -31,4 +31,15 @@ describe Underskog::User do
     end
   end
 
+  describe "#updated_at" do
+    it "should return a Time when updated_at is set" do
+      user = Underskog::User.new('updated_at' => "Mon Jul 16 12:59:01 +0000 2007")
+      user.updated_at.should be_a Time
+    end
+    it "should return nil when updated_at is not set" do
+      user = Underskog::User.new
+      user.updated_at.should be_nil
+    end
+  end
+
 end

@@ -6,11 +6,11 @@ module Underskog
     lazy_attr_reader :kind
 
     def user
-      @user ||= Underskog::User.new(@attrs.except("kind").except("event_id"))
+      @user ||= Underskog::User.new(@attrs.except("kind").except("event_id")) if @attrs["id"]
     end
 
     def event
-      @event ||= Underskog.event(@attrs["event_id"])
+      @event ||= Underskog::Event.new("id" => @attrs["event_id"]) if @attrs["event_id"]
     end
 
   end

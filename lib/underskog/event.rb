@@ -24,7 +24,7 @@ module Underskog
     end
 
     def start_time
-      @start_time ||= Time.parse(@attrs['time'])
+      @start_time ||= Time.parse(@attrs['time']) if @attrs['time']
     end
 
   end
