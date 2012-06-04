@@ -11,7 +11,7 @@ module Underskog
     include Underskog::Creatable
     include Underskog::Updatable
     lazy_attr_reader :id, :title, :body, :canceled, :home_url,
-      :private, :ticket_directions, :tags, :venue
+      :private, :ticket_directions, :tags, :venue, :url
 
     # @param other [Underskog::Event]
     # @return [Boolean]

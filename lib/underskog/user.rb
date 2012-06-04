@@ -8,7 +8,7 @@ module Underskog
     include Underskog::Creatable
     include Underskog::Updatable
     lazy_attr_reader :id, :name, :realname, :sex, :description, :image_url,
-      :email, :home_url, :gardener, :season_pass_active, :friend
+      :email, :home_url, :gardener, :season_pass_active, :friend, :url
 
     # @param other [Underskog::User]
     # @return [Boolean]
