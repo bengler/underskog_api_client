@@ -9,7 +9,7 @@ module Underskog
     include Underskog::Creatable
     include Underskog::Updatable
     lazy_attr_reader :id, :title, :body, :address, :postcode,
-      :home_url, :ticket_directions, :tags, :flickr_tag, :city
+      :home_url, :ticket_directions, :tags, :flickr_tag, :city, :url
 
     # @param other [Underskog::Venue]
     # @return [Boolean]
