@@ -186,5 +186,22 @@ module Underskog
       events
     end
 
+    # Send message to a user
+    #
+    # @requires_authentication Yes
+    # @overload send_message(user, options={:body => "foo"})
+    #   @param user [Integer, String, Underskog::User] A Underskog user ID or object.
+    #   @param options [Hash] A customizable set of options (i.e. {:body => 'foo'}).
+    #   @return [boolean] True if the message was sent, false otherwise
+    def send_message(*args)
+      options = args.last.is_a?(Hash) ? args.pop : {}
+      if user = args.pop
+        options.merge_user!(user)
+        response = post("api/v1/messages", options.merge(:recipient_id => options[:id]).except(:id))
+        return true if response["message"] == "Message sent"
+      end
+      false
+    end
+
   end
 end
