@@ -14,7 +14,9 @@ module Underskog
           when 'false'
             false
           else
-            MultiJson.load(body)
+            json = MultiJson.load(body)
+            return json['data'] if json.is_a?(Hash) and json['data']
+            json
           end
       end
 
