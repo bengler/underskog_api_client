@@ -1,1 +1,1 @@
-[{"id":23,"name":"marika","image_url":"http://underskog.no/cache/image/38250_48x48_cu.png","kind":"attend"}]
+{"data":[{"id":23,"name":"marika","image_url":"http://underskog.no/cache/image/38250_48x48_cu.png","kind":"attend"}],"paging":{"next":"https://localhost/api/v1/events/1/participations?access_token=oeslNdX6mYIGqdNqhcbx2BvY9LNFId3aDuw1o91A&page=2"}}
