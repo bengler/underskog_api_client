@@ -7,7 +7,7 @@ module Underskog
     #
     # @return [Time]
     def updated_at
-      @created_at ||= Time.parse(@attrs['updated_at']) unless @attrs['updated_at'].nil?
+      @updated_at ||= Time.parse(@attrs['updated_at']) unless @attrs['updated_at'].nil?
     end
 
     # The use which updated the object
