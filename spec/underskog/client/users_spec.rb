@@ -9,7 +9,7 @@ describe Underskog::Client do
   describe "#user" do
     context "with a user ID passed" do
       before do
-        stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
+        stub_request(:get, "https://underskog.no/api/v1/users/831?access_token&id=831").
           with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
           to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
       end
@@ -22,7 +22,7 @@ describe Underskog::Client do
     context "with a user object passed" do
       context "with a user ID" do
         before do
-          stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
+          stub_request(:get, "https://underskog.no/api/v1/users/831?access_token&id=831").
             with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
             to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
         end
@@ -36,7 +36,7 @@ describe Underskog::Client do
     end
     context "without a user ID passed" do
       before do
-        stub_request(:get, "https://localhost/api/v1/users/current?access_token").
+        stub_request(:get, "https://underskog.no/api/v1/users/current?access_token").
           with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
           to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
       end
@@ -49,10 +49,10 @@ describe Underskog::Client do
   end
   describe "#user?" do
     before do
-      stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
+      stub_request(:get, "https://underskog.no/api/v1/users/831?access_token&id=831").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
         to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-      stub_request(:get, "https://localhost/api/v1/users/23423432?access_token&id=23423432").
+      stub_request(:get, "https://underskog.no/api/v1/users/23423432?access_token&id=23423432").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
         to_return(:status => 404, :headers => {:content_type => "application/json; charset=utf-8"})
     end

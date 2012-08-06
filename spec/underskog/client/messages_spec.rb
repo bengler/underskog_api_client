@@ -8,7 +8,7 @@ describe Underskog::Client do
 
   describe "#send_message" do
     before do
-      stub_request(:post, "https://localhost/api/v1/messages").
+      stub_request(:post, "https://underskog.no/api/v1/messages").
                with(:body => {"access_token"=>true, "body"=>"foo", "recipient_id"=>"skogsmaskin"},
                     :headers => {'Accept'=>'application/json', 'Content-Type'=>'application/x-www-form-urlencoded'}).
                to_return(:status => 200, :body => '{"message":"foo"}', :headers => {})

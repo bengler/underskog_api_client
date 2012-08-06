@@ -65,11 +65,11 @@ describe Underskog::Client do
   end
 
   it "should not cache the screen name across clients" do
-    stub_request(:get, "https://localhost/api/v1/users/current?access_token").
+    stub_request(:get, "https://underskog.no/api/v1/users/current?access_token").
       to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
     client1 = Underskog::Client.new
     client1.current_user.name.should == 'skogsmaskin'
-    stub_request(:get, "https://localhost/api/v1/users/current?access_token").
+    stub_request(:get, "https://underskog.no/api/v1/users/current?access_token").
       to_return(:body => fixture("even.json"), :headers => {:content_type => "application/json; charset=utf-8"})
     client2 = Underskog::Client.new
     client2.current_user.name.should == 'even'
@@ -77,7 +77,7 @@ describe Underskog::Client do
 
   it "should recursively merge connection options" do
     ua = 'Custom User Agent'
-    stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
+    stub_request(:get, "https://underskog.no/api/v1/users/831?access_token&id=831").
       with(:headers => {"Accept" => "application/json", "User-Agent" => ua}).
       to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
     client = Underskog::Client.new(:connection_options => {:headers => {:user_agent => ua}})

@@ -17,7 +17,7 @@ module Underskog
     DEFAULT_PROXY = nil
 
     # The endpoint that will be used to connect if none is set
-    DEFAULT_ENDPOINT = 'https://localhost'
+    DEFAULT_ENDPOINT = 'https://underskog.no'
 
     # The oauth token if none is set
     DEFAULT_ACCESS_TOKEN = nil

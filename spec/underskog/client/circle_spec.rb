@@ -8,13 +8,13 @@ describe Underskog::Client do
 
   describe "#circle" do
     before do
-      stub_request(:get, "https://localhost/api/v1/users/831?access_token&id=831").
+      stub_request(:get, "https://underskog.no/api/v1/users/831?access_token&id=831").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
         to_return(:body => fixture("skogsmaskin.json"), :headers => {:content_type => "application/json; charset=utf-8"})
-      stub_request(:get, "https://localhost/api/v1/users/831/circle?access_token&id=831&page=2").
+      stub_request(:get, "https://underskog.no/api/v1/users/831/circle?access_token&id=831&page=2").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
         to_return(:body => "[]", :headers => {:content_type => "application/json; charset=utf-8"})
-      stub_request(:get, "https://localhost/api/v1/users/831/circle?access_token&id=831&page=1").
+      stub_request(:get, "https://underskog.no/api/v1/users/831/circle?access_token&id=831&page=1").
         with(:headers => {'Accept'=>'application/json', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3'}).
         to_return(:body => fixture("skogsmaskin_circle.json"), :headers => {:content_type => "application/json; charset=utf-8"})
     end

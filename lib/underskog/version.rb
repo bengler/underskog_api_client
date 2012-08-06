@@ -13,7 +13,7 @@ module Underskog
 
     # @return [Integer]
     def self.patch
-      1
+      2
     end
 
     # @return [String, NilClass]
