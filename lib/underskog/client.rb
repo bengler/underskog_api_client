@@ -33,7 +33,7 @@ module Underskog
     # @return [Underskog::User]
     def current_user
       @current_user ||= begin
-        Underskog.user
+        user
       rescue Underskog::Error::Unauthorized
         nil
       end
@@ -81,7 +81,10 @@ module Underskog
       options = {}
       options.merge!(args.last.is_a?(Hash) ? args.pop : {})
       options[:page] ||= 1
-      user = args.pop
+      if user = args.pop
+      else
+        user = self.user
+      end
       options.merge_user!(user)
       users = []
       circle_data = get("api/v1/users/#{options[:id]}/circle", options)
@@ -155,7 +158,10 @@ module Underskog
       options = {}
       options.merge!(args.last.is_a?(Hash) ? args.pop : {})
       options[:page] ||= 1
-      user = args.pop
+      if user = args.pop
+      else
+        user = self.user
+      end
       options.merge_user!(user)
       events = []
       events_data = get("api/v1/users/#{options[:id]}/events", options)
@@ -176,7 +182,10 @@ module Underskog
       options = {}
       options.merge!(args.last.is_a?(Hash) ? args.pop : {})
       options[:page] ||= 1
-      user = args.pop
+      if user = args.pop
+      else
+        user = self.user
+      end
       options.merge_user!(user)
       events = []
       events_data = get("api/v1/users/#{options[:id]}/events/circle", options)
