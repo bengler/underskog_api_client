@@ -206,8 +206,8 @@ module Underskog
       options = args.last.is_a?(Hash) ? args.pop : {}
       if user = args.pop
         options.merge_user!(user)
-        response = post("api/v1/messages", options.merge(:recipient_id => options[:id]).except(:id))
-        return true if response["message"] == "Message sent"
+        response = post("api/v1/messages/#{options[:id]}", options)
+        return true if response["message"] == "Sent"
       end
       false
     end
