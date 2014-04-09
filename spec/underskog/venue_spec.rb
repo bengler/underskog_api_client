@@ -64,4 +64,12 @@ describe Underskog::Venue do
     end
   end
 
+  describe "#geolocation" do
+    it "should return a Location when location is set" do
+      venue = Underskog::Venue.new('updater' => {"id" => 1, "name" => "foo"}, 'location' => {"lat" => 59, "lon" => 10})
+      location = Underskog::Location.new(59, 10)
+      venue.geolocation.lat == location.lat
+      venue.geolocation.lon == location.lon
+    end
+  end
 end
