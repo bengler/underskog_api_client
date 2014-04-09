@@ -8,12 +8,12 @@ module Underskog
 
     # @return [Integer]
     def self.minor
-      0
+      1
     end
 
     # @return [Integer]
     def self.patch
-      3
+      0
     end
 
     # @return [String, NilClass]
