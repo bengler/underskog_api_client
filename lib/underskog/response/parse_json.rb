@@ -7,6 +7,8 @@ module Underskog
 
       def parse(body)
           case body
+          when nil
+            nil
           when ''
             nil
           when 'true'
